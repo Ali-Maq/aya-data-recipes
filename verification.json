@@ -1,0 +1,330 @@
+{
+  "run": "91ae22817df040e7",
+  "issue": "https://github.com/Ali-Maq/aya-data-recipes/issues/1",
+  "contract_sha256": "b2f301300170295fd0a9236105d274ea88580b2beccf9289205c8a4c98763261",
+  "reference_sha256": "0860ff6f0b18028f50e275e95ce56de0d30f6c2387a6679eed292d81facb6bbe",
+  "module_sha256": "58962c252d7c35a92ee45f0ca7bb7f41b2dfa64e52c819d98f94cf60dbf503bf",
+  "development": {
+    "source_sha256": "58962c252d7c35a92ee45f0ca7bb7f41b2dfa64e52c819d98f94cf60dbf503bf",
+    "total": 210,
+    "passed": 210,
+    "reference_sha256": "9d139c59dea37367a8a8f59bf923ca04f2227313a3bacfeabf1cd775c1719bb0",
+    "library_sha256": "0860ff6f0b18028f50e275e95ce56de0d30f6c2387a6679eed292d81facb6bbe",
+    "evaluator_version": "aya-recipe-v1",
+    "seed": "11106300610617018054"
+  },
+  "holdout": {
+    "source_sha256": "58962c252d7c35a92ee45f0ca7bb7f41b2dfa64e52c819d98f94cf60dbf503bf",
+    "total": 210,
+    "passed": 210,
+    "reference_sha256": "9d139c59dea37367a8a8f59bf923ca04f2227313a3bacfeabf1cd775c1719bb0",
+    "library_sha256": "0860ff6f0b18028f50e275e95ce56de0d30f6c2387a6679eed292d81facb6bbe",
+    "evaluator_version": "aya-recipe-v1",
+    "seed": "2474609135384635336"
+  },
+  "evidence_ids": [
+    "ev_f0dc53526d238e24894f589f8f70452d508e746ad7d7a98447526bc5b82c9df6",
+    "ev_2d8d709cd28a5888d1b913b473d4ca9162cd30a3828b3bce73c691e6ee6161b2",
+    "ev_67adea7c86a55783b71197388d4678425cc1dcaddc3bc4508c3b15147e9f9288"
+  ],
+  "reference_evidence": [
+    {
+      "evidence_id": "ev_2d8d709cd28a5888d1b913b473d4ca9162cd30a3828b3bce73c691e6ee6161b2",
+      "subject": {
+        "name": "libjq.so",
+        "digest": {
+          "sha256": "0860ff6f0b18028f50e275e95ce56de0d30f6c2387a6679eed292d81facb6bbe"
+        },
+        "local_path": "/reference/libjq.so",
+        "format": "elf",
+        "architecture": "arm64"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile": {
+        "provider": {
+          "id": "ghidra",
+          "name": "Ghidra",
+          "version": "12.1.4"
+        },
+        "parameters": {
+          "target_kind": "executable",
+          "target_format": "elf",
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64"
+          ],
+          "import_mode": "ephemeral-source-immutable",
+          "annotation_policy": "atomic-function-entry-metadata-v1",
+          "load_image_observations": "source-mappings-entry-context-v2",
+          "function_body_evidence": "complete-inclusive-ranges-v1",
+          "function_references": "complete-body-and-entry-reference-manager-v2",
+          "call_relationship_coverage": "function-body-call-coverage-v5",
+          "function_dossier_coverage": "observed-facets-and-call-relationships-v1",
+          "string_inventory_evidence": "defined-data-coverage-v1",
+          "location_resolution": "explicit-address-exact-entry-symbol-first-v3",
+          "procedure_file_offset_resolution": "address-first-unique-target-source-mapping-v2",
+          "instruction_flow_evidence": "decoded-return-pcode-v1",
+          "instruction_references": "exact-address-incoming-v1",
+          "function_boundary_observations": "ghidra-function-boundary-limitations-v3",
+          "no_return_repair": "returning-imports-decoded-return-v2",
+          "process_launch": "inspected-jvm-launch-support-v1",
+          "jump_table_evidence": "typed-case-default-blocks-v1",
+          "decompiler_jump_loads": true,
+          "loader": "auto-from-header",
+          "language_id": "auto-from-header",
+          "compiler_spec_id": "auto-default",
+          "analyzer_preset": "ghidra-default"
+        },
+        "digest": "73e1cb475c2e2db20fa06886ffd7e09089e3c060afaeb5a952facaabce0566f5"
+      },
+      "predicate_type": "rea.analysis",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x126160"
+      },
+      "raw_result": {
+        "value": "\nundefined8 jv_getpath(undefined8 param_1,undefined8 param_2,undefined8 param_3,undefined8 param_4)\n\n{\n  int iVar1;\n  undefined4 uVar2;\n  undefined8 uVar3;\n  undefined8 uVar4;\n  undefined8 uVar5;\n  undefined8 uVar6;\n  undefined1 auVar7 [16];\n  undefined1 auVar8 [16];\n  \n  auVar8._8_8_ = param_2;\n  auVar8._0_8_ = param_1;\n  auVar7._8_8_ = param_4;\n  auVar7._0_8_ = param_3;\n  while( true ) {\n    uVar4 = auVar8._8_8_;\n    uVar3 = auVar8._0_8_;\n    uVar6 = auVar7._8_8_;\n    uVar5 = auVar7._0_8_;\n    iVar1 = jv_get_kind(uVar5,uVar6);\n    if (iVar1 != 6) {\n      jv_free(uVar3,uVar4);\n      jv_free(uVar5,uVar6);\n      jv_string(\"Path must be specified as an array\");\n      uVar3 = jv_invalid_with_msg();\n      return uVar3;\n    }\n    jv_copy(uVar5,uVar6);\n    iVar1 = jv_array_length();\n    if (10000 < iVar1) {\n      jv_free(uVar3,uVar4);\n      jv_free(uVar5,uVar6);\n      jv_string(\"Path too deep\");\n      uVar3 = jv_invalid_with_msg();\n      return uVar3;\n    }\n    iVar1 = jv_get_kind();\n    if (iVar1 == 0) break;\n    jv_copy(uVar5,uVar6);\n    iVar1 = jv_array_length();\n    if (iVar1 == 0) break;\n    auVar7 = jv_copy(uVar5,uVar6);\n    auVar8 = jv_array_get(auVar7._0_8_,auVar7._8_8_,0);\n    jv_copy(uVar5,uVar6);\n    uVar2 = jv_array_length();\n    auVar7 = jv_array_slice(uVar5,uVar6,1,uVar2);\n    auVar8 = jv_get(uVar3,uVar4,auVar8._0_8_,auVar8._8_8_);\n  }\n  jv_free(uVar5,uVar6);\n  return uVar3;\n}\n\n",
+        "limitations": [
+          "Ghidra Listing reports a terminal call at 0x1261dc to 0x108760 jv_invalid_with_msg (external=false, thunk=true, hasNoReturn=false); fallthrough is excluded by Ghidra's flow model. The reason for the terminal flow is not established by this observation.",
+          "Ghidra Listing reports a terminal call at 0x1262cc to 0x108760 jv_invalid_with_msg (external=false, thunk=true, hasNoReturn=false); fallthrough is excluded by Ghidra's flow model. The reason for the terminal flow is not established by this observation."
+        ]
+      },
+      "normalized_result": "\nundefined8 jv_getpath(undefined8 param_1,undefined8 param_2,undefined8 param_3,undefined8 param_4)\n\n{\n  int iVar1;\n  undefined4 uVar2;\n  undefined8 uVar3;\n  undefined8 uVar4;\n  undefined8 uVar5;\n  undefined8 uVar6;\n  undefined1 auVar7 [16];\n  undefined1 auVar8 [16];\n  \n  auVar8._8_8_ = param_2;\n  auVar8._0_8_ = param_1;\n  auVar7._8_8_ = param_4;\n  auVar7._0_8_ = param_3;\n  while( true ) {\n    uVar4 = auVar8._8_8_;\n    uVar3 = auVar8._0_8_;\n    uVar6 = auVar7._8_8_;\n    uVar5 = auVar7._0_8_;\n    iVar1 = jv_get_kind(uVar5,uVar6);\n    if (iVar1 != 6) {\n      jv_free(uVar3,uVar4);\n      jv_free(uVar5,uVar6);\n      jv_string(\"Path must be specified as an array\");\n      uVar3 = jv_invalid_with_msg();\n      return uVar3;\n    }\n    jv_copy(uVar5,uVar6);\n    iVar1 = jv_array_length();\n    if (10000 < iVar1) {\n      jv_free(uVar3,uVar4);\n      jv_free(uVar5,uVar6);\n      jv_string(\"Path too deep\");\n      uVar3 = jv_invalid_with_msg();\n      return uVar3;\n    }\n    iVar1 = jv_get_kind();\n    if (iVar1 == 0) break;\n    jv_copy(uVar5,uVar6);\n    iVar1 = jv_array_length();\n    if (iVar1 == 0) break;\n    auVar7 = jv_copy(uVar5,uVar6);\n    auVar8 = jv_array_get(auVar7._0_8_,auVar7._8_8_,0);\n    jv_copy(uVar5,uVar6);\n    uVar2 = jv_array_length();\n    auVar7 = jv_array_slice(uVar5,uVar6,1,uVar2);\n    auVar8 = jv_get(uVar3,uVar4,auVar8._0_8_,auVar8._8_8_);\n  }\n  jv_free(uVar5,uVar6);\n  return uVar3;\n}\n\n",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "environment": null,
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit.",
+        "Ghidra Listing reports a terminal call at 0x1261dc to 0x108760 jv_invalid_with_msg (external=false, thunk=true, hasNoReturn=false); fallthrough is excluded by Ghidra's flow model. The reason for the terminal flow is not established by this observation.",
+        "Ghidra Listing reports a terminal call at 0x1262cc to 0x108760 jv_invalid_with_msg (external=false, thunk=true, hasNoReturn=false); fallthrough is excluded by Ghidra's flow model. The reason for the terminal flow is not established by this observation."
+      ],
+      "relationship_coverage": null,
+      "locations": [],
+      "evidence_links": []
+    },
+    {
+      "evidence_id": "ev_67adea7c86a55783b71197388d4678425cc1dcaddc3bc4508c3b15147e9f9288",
+      "subject": {
+        "name": "libjq.so",
+        "digest": {
+          "sha256": "0860ff6f0b18028f50e275e95ce56de0d30f6c2387a6679eed292d81facb6bbe"
+        },
+        "local_path": "/reference/libjq.so",
+        "format": "elf",
+        "architecture": "arm64"
+      },
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "analysis_profile": {
+        "provider": {
+          "id": "ghidra",
+          "name": "Ghidra",
+          "version": "12.1.4"
+        },
+        "parameters": {
+          "target_kind": "executable",
+          "target_format": "elf",
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64"
+          ],
+          "import_mode": "ephemeral-source-immutable",
+          "annotation_policy": "atomic-function-entry-metadata-v1",
+          "load_image_observations": "source-mappings-entry-context-v2",
+          "function_body_evidence": "complete-inclusive-ranges-v1",
+          "function_references": "complete-body-and-entry-reference-manager-v2",
+          "call_relationship_coverage": "function-body-call-coverage-v5",
+          "function_dossier_coverage": "observed-facets-and-call-relationships-v1",
+          "string_inventory_evidence": "defined-data-coverage-v1",
+          "location_resolution": "explicit-address-exact-entry-symbol-first-v3",
+          "procedure_file_offset_resolution": "address-first-unique-target-source-mapping-v2",
+          "instruction_flow_evidence": "decoded-return-pcode-v1",
+          "instruction_references": "exact-address-incoming-v1",
+          "function_boundary_observations": "ghidra-function-boundary-limitations-v3",
+          "no_return_repair": "returning-imports-decoded-return-v2",
+          "process_launch": "inspected-jvm-launch-support-v1",
+          "jump_table_evidence": "typed-case-default-blocks-v1",
+          "decompiler_jump_loads": true,
+          "loader": "auto-from-header",
+          "language_id": "auto-from-header",
+          "compiler_spec_id": "auto-default",
+          "analyzer_preset": "ghidra-default"
+        },
+        "digest": "73e1cb475c2e2db20fa06886ffd7e09089e3c060afaeb5a952facaabce0566f5"
+      },
+      "predicate_type": "rea.analysis",
+      "operation": "procedure_pseudo_code",
+      "parameters": {
+        "procedure": "0x108ee0"
+      },
+      "raw_result": {
+        "value": "\nvoid jv_getpath(void)\n\n{\n  jv_getpath();\n  return;\n}\n\n",
+        "limitations": [
+          "Ghidra Listing reports a terminal call at 0x108eec to 0x126160 jv_getpath (external=false, thunk=false, hasNoReturn=false); fallthrough is excluded by Ghidra's flow model. The reason for the terminal flow is not established by this observation."
+        ]
+      },
+      "normalized_result": "\nvoid jv_getpath(void)\n\n{\n  jv_getpath();\n  return;\n}\n\n",
+      "confidence": "observed",
+      "authority": "shipped-artifact",
+      "environment": null,
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit.",
+        "Ghidra Listing reports a terminal call at 0x108eec to 0x126160 jv_getpath (external=false, thunk=false, hasNoReturn=false); fallthrough is excluded by Ghidra's flow model. The reason for the terminal flow is not established by this observation."
+      ],
+      "relationship_coverage": null,
+      "locations": [],
+      "evidence_links": []
+    }
+  ],
+  "native_agents": [
+    {
+      "sessions": [
+        {
+          "id": "20261017_214009_8969c9",
+          "source": "subagent",
+          "parent_session_id": "20261017_213925_5297c8",
+          "tool_call_count": 2,
+          "input_tokens": 20991,
+          "output_tokens": 3600,
+          "api_call_count": 2,
+          "tools": [
+            "read_file"
+          ]
+        },
+        {
+          "id": "20261017_213925_5297c8",
+          "source": "cli",
+          "parent_session_id": null,
+          "tool_call_count": 39,
+          "input_tokens": 36948,
+          "output_tokens": 16722,
+          "api_call_count": 39,
+          "tools": [
+            "delegate_task",
+            "patch",
+            "read_file",
+            "search_files",
+            "skill_view",
+            "terminal",
+            "write_file"
+          ]
+        }
+      ],
+      "child_sessions": 1,
+      "api_calls": 41,
+      "input_tokens": 57939,
+      "output_tokens": 20322
+    },
+    {
+      "sessions": [
+        {
+          "id": "20261017_214334_42e540",
+          "source": "subagent",
+          "parent_session_id": "20261017_214143_865c10",
+          "tool_call_count": 19,
+          "input_tokens": 26916,
+          "output_tokens": 13714,
+          "api_call_count": 15,
+          "tools": [
+            "read_file",
+            "terminal"
+          ]
+        },
+        {
+          "id": "20261017_214143_865c10",
+          "source": "cli",
+          "parent_session_id": null,
+          "tool_call_count": 42,
+          "input_tokens": 55073,
+          "output_tokens": 29332,
+          "api_call_count": 33,
+          "tools": [
+            "delegate_task",
+            "patch",
+            "read_file",
+            "search_files",
+            "skill_view",
+            "skills_list",
+            "terminal"
+          ]
+        }
+      ],
+      "child_sessions": 1,
+      "api_calls": 48,
+      "input_tokens": 81989,
+      "output_tokens": 43046
+    },
+    {
+      "sessions": [
+        {
+          "id": "20261017_213853_b50a8e",
+          "source": "subagent",
+          "parent_session_id": "20261017_213826_80f3c4",
+          "tool_call_count": 0,
+          "input_tokens": 13093,
+          "output_tokens": 1457,
+          "api_call_count": 1,
+          "tools": []
+        },
+        {
+          "id": "20261017_213826_80f3c4",
+          "source": "cli",
+          "parent_session_id": null,
+          "tool_call_count": 19,
+          "input_tokens": 22662,
+          "output_tokens": 6483,
+          "api_call_count": 16,
+          "tools": [
+            "delegate_task",
+            "execute_code",
+            "mcp__rea__binary_session",
+            "mcp__rea__procedure_pseudo_code",
+            "mcp__rea__search_procedures",
+            "skill_view",
+            "terminal",
+            "tool_call",
+            "tool_describe",
+            "write_file"
+          ]
+        }
+      ],
+      "child_sessions": 1,
+      "api_calls": 17,
+      "input_tokens": 35755,
+      "output_tokens": 7940
+    }
+  ],
+  "inference": {
+    "provider": "Crusoe",
+    "endpoint": "https://api.inference.crusoecloud.com/v1",
+    "model": "deepseek-ai/DeepSeek-V4-Pro",
+    "response_id": "a407c4016aef4551adafc5a7e9e1cb07",
+    "usage": {
+      "prompt_tokens": 738,
+      "total_tokens": 1611,
+      "completion_tokens": 873,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "reasoning_tokens": 0
+    }
+  },
+  "worker": "aya-feature"
+}
