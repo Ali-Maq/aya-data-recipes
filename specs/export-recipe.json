@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "saved-json-export",
+  "title": "Saved JSON export recipes for Open WebUI",
+  "target_repository": "Ali-Maq/aya-data-recipes",
+  "target_branch": "main",
+  "allowed_paths": ["recipe.py", "tests/test_agent_recipe.py"],
+  "entrypoint": "recipe.export_recipe",
+  "reference": {
+    "software": "jq",
+    "version": "1.8.2",
+    "repository": "https://github.com/jqlang/jq",
+    "executable_sha256": "9d139c59dea37367a8a8f59bf923ca04f2227313a3bacfeabf1cd775c1719bb0",
+    "library_sha256": "0860ff6f0b18028f50e275e95ce56de0d30f6c2387a6679eed292d81facb6bbe",
+    "library_path": "/usr/lib/aarch64-linux-gnu/libjq.so.1.0.4",
+    "analysis": "symbol-assisted binary inspection; no reference source supplied to the builder"
+  },
+  "input": {
+    "records": "Array of JSON objects; at most 10000 rows",
+    "columns": "Array of 1..32 objects: label (nonempty string <=128 chars), path (array of 0..16 string or nonnegative integer segments), optional fallback (scalar), fallback_mode ('jq' default, or 'null')",
+    "fallback": "Only applied if the column includes the fallback key. jq mode replaces null, missing, or false. null mode replaces only null or missing. Zero and empty string are preserved.",
+    "numbers": "Only integers within +/-9007199254740991. Reject floating-point values and larger integers.",
+    "limit_bytes": 1048576
+  },
+  "output": {
+    "success": "Object with columns (ordered labels), rows (ordered arrays of scalar values), csv (header + rows, LF after every row). Match jq @csv: strings always quoted, quotes doubled, null empty, booleans lowercase, integers decimal. Escape NUL inside strings as backslash followed by zero, as jq does.",
+    "error": "Return only {'error': CODE}. Codes: invalid_recipe for malformed shapes or options; limit_exceeded for input/row/column bounds; unsupported_number for prohibited numbers anywhere in the request; path_type for incompatible path traversal; non_scalar for object/array result or fallback. Missing object keys and out-of-range array indexes return null. Traversal through null returns null. Do not raise exceptions for JSON input."
+  },
+  "runtime": {"python": "3.12", "dependencies": "stdlib only", "network": false, "timeout_seconds": 5},
+  "acceptance": [
+    "Agent writes and runs focused unittest cases before delivery",
+    "Separate evaluator compares valid requests with the pinned jq binary",
+    "Independent invalid-input checks enforce the contract",
+    "Candidate has no subprocess, network, file IO, imports outside the approved stdlib set, or dynamic code execution",
+    "GitHub CI succeeds for the exact delivered commit",
+    "An authorized Open WebUI upload produces a CSV and a saved recipe works after reload"
+  ]
+}
